@@ -31,7 +31,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Список дел" id="Z73-bS-fDv">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="HnZ-Yl-SwA"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="HnZ-Yl-SwA">
+                            <connections>
+                                <action selector="removeAction:" destination="ITU-2S-uPU" id="OVg-No-FU0"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4q5-Ke-oKh">
                             <connections>
                                 <action selector="newCellTasks:" destination="ITU-2S-uPU" id="Sr8-6s-aNS"/>

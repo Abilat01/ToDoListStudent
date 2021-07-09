@@ -10,13 +10,6 @@ import CoreData
 
 class ToDoTableViewController: UITableViewController {
     
-    var tasks: [Tasks] = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
     //сохранение задачи в coreData
     func saveTask(withTitle title: String) {
         
@@ -37,9 +30,9 @@ class ToDoTableViewController: UITableViewController {
     }
     
     private func getContext() -> NSManagedObjectContext {
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
-        
         
     }
     
@@ -57,21 +50,11 @@ class ToDoTableViewController: UITableViewController {
         }
         
     }
-    
-    func removeItem(at index: Int) {
-        tasks.remove(at: index)
-    }
-    
     // MARK: - Table view data source
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
@@ -81,8 +64,6 @@ class ToDoTableViewController: UITableViewController {
         
         return cell
     }
-    
-    
     //MARK: - IBACTION saveTask and remove
     
     @IBAction func newCellTasks(_ sender: UIBarButtonItem) {
@@ -105,6 +86,37 @@ class ToDoTableViewController: UITableViewController {
         present(alertControler, animated: true, completion: nil)
         
     }
+    
+    @IBAction func removeAction(_ sender: UIBarButtonItem) {
+        
+        let alertControler = UIAlertController(title: "Удалить все записи?", message: "действие не возможно отменить", preferredStyle: .alert)
+        let alertCancel = UIAlertAction(title: "Отмена", style: .default)
+        
+        let alertRemove = UIAlertAction(title: "Ок", style: .default) { action in
+            let context = self.getContext()
+            let fetchRequest: NSFetchRequest<Tasks> = Tasks.fetchRequest()
+            if let objects = try? context.fetch(fetchRequest) {
+                for object in objects {
+                    context.delete(object)
+                }
+            }
+            
+            do {
+                try context.save()
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+            tasks.removeAll(keepingCapacity: false)
+            self.tableView.reloadData()
+        }
+        
+        alertControler.addAction(alertRemove)
+        alertControler.addAction(alertCancel)
+        
+        present(alertControler, animated: true)
+    }
 }
+
+
 
 

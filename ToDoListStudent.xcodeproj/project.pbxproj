@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BCB69CE26986EE90054B0E6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB69CD26986EE90054B0E6 /* Model.swift */; };
 		3BFDBF7D268E02FE009897B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFDBF7C268E02FE009897B1 /* AppDelegate.swift */; };
 		3BFDBF7F268E02FE009897B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFDBF7E268E02FE009897B1 /* SceneDelegate.swift */; };
 		3BFDBF84268E02FE009897B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BFDBF82268E02FE009897B1 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3BCB69CD26986EE90054B0E6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		3BFDBF79268E02FE009897B1 /* ToDoListStudent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListStudent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BFDBF7C268E02FE009897B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BFDBF7E268E02FE009897B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				3BFDBF7C268E02FE009897B1 /* AppDelegate.swift */,
 				3BFDBF7E268E02FE009897B1 /* SceneDelegate.swift */,
 				3BFDBF93268E037D009897B1 /* ToDoTableViewController.swift */,
+				3BCB69CD26986EE90054B0E6 /* Model.swift */,
 				3BFDBF82268E02FE009897B1 /* Main.storyboard */,
 				3BFDBF88268E02FF009897B1 /* Assets.xcassets */,
 				3BFDBF8A268E02FF009897B1 /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BCB69CE26986EE90054B0E6 /* Model.swift in Sources */,
 				3BFDBF87268E02FE009897B1 /* ToDoListStudent.xcdatamodeld in Sources */,
 				3BFDBF94268E037D009897B1 /* ToDoTableViewController.swift in Sources */,
 				3BFDBF7D268E02FE009897B1 /* AppDelegate.swift in Sources */,
