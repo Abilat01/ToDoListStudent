@@ -10,7 +10,7 @@ import CoreData
 
 class ToDoTableViewController: UITableViewController {
     
-    var  tasks: [Tasks] = []
+    var tasks: [Tasks] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +19,8 @@ class ToDoTableViewController: UITableViewController {
     
     //сохранение задачи в coreData
     func saveTask(withTitle title: String) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
+        
+        let context = getContext()
         
         guard let entity = NSEntityDescription.entity(forEntityName: "Tasks", in: context) else { return }
         
@@ -36,11 +36,17 @@ class ToDoTableViewController: UITableViewController {
         
     }
     
+    private func getContext() -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+        
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
+        let context = getContext()
         
         let fetchRequest: NSFetchRequest<Tasks> = Tasks.fetchRequest()
         
@@ -50,6 +56,10 @@ class ToDoTableViewController: UITableViewController {
             print(error.localizedDescription)
         }
         
+    }
+    
+    func removeItem(at index: Int) {
+        tasks.remove(at: index)
     }
     
     // MARK: - Table view data source
@@ -73,7 +83,7 @@ class ToDoTableViewController: UITableViewController {
     }
     
     
-    //MARK: - IBACTION saveTask
+    //MARK: - IBACTION saveTask and remove
     
     @IBAction func newCellTasks(_ sender: UIBarButtonItem) {
         
@@ -96,3 +106,5 @@ class ToDoTableViewController: UITableViewController {
         
     }
 }
+
+
